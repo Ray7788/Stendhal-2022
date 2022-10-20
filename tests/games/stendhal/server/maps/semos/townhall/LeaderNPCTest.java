@@ -188,7 +188,6 @@ public class LeaderNPCTest {
 		player.equipToInventoryOnly(weapon8);
 		assertTrue(player.isEquipped("assassin dagger"));
 		
-		
 
 		assertTrue(en.step(player, "weapon"));
 		assertEquals("Well, your assassin dagger has quite low damage capability, doesn't it? You should look for something with a better attack to rate ratio. At least you can hit fast with it, so it may be good enough against creatures weaker than you.", getReply(npc));
@@ -203,9 +202,8 @@ public class LeaderNPCTest {
 		assertTrue(player.isEquipped("rod of the gm"));
 		
 		
-		
 		assertTrue(en.step(player, "weapon"));
-		assertEquals("That rod of the gm is a powerful weapon, it should be useful against strong creatures. Remember though that something weaker but faster may suffice against lower level creatures.", getReply(npc));
+		assertEquals("I see you have the rod of the gm. You must have heightened powers, only very special people can get this weapon. I cannot critique a weapon as stong as this, nothing is stronger!", getReply(npc));
 		player.drop(weapon9);
 		
 		//say goodbye
