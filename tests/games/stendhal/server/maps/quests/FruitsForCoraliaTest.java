@@ -173,7 +173,7 @@ public class FruitsForCoraliaTest extends ZonePlayerAndNPCTestImpl {
 
 		// -----------------------------------------------
 
-		assertEquals("I'd still like 4 #apples, 5 #bananas, 9 #cherries, 2 #'bunches of grapes', 4 #pears, 2 #pomegranates, and a #watermelon. Have you brought any?", getReply(npc));
+		assertEquals("I'd still like 4 #apples, 5 #bananas, 9 #cherries, 2 #'bunches of grapes', 4 #pears, 2 #pomegranates, and a #watermelon. Have you brought any or #everything? ", getReply(npc));
 
 		// -----------------------------------------------
 
@@ -217,7 +217,7 @@ public class FruitsForCoraliaTest extends ZonePlayerAndNPCTestImpl {
 
 		// -----------------------------------------------
 
-		assertEquals("I'd still like 5 #bananas, 9 #cherries, 2 #'bunches of grapes', 4 #pears, 2 #pomegranates, and a #watermelon. Have you brought any?", getReply(npc));
+		assertEquals("I'd still like 5 #bananas, 9 #cherries, 2 #'bunches of grapes', 4 #pears, 2 #pomegranates, and a #watermelon. Have you brought any or #everything? ", getReply(npc));
 
 		// -----------------------------------------------
 
@@ -332,18 +332,15 @@ public class FruitsForCoraliaTest extends ZonePlayerAndNPCTestImpl {
 
 		assertEquals("Bye.", getReply(npc));
 		*/
-		
-		
-////////////////////////////////////////////////////////////////////////////////////////////////
-//		Now start a new test for Coralia that she should have option to accept everything.
-		PlayerTestHelper.equipWithStackableItem(player, "apple", 4);
-		PlayerTestHelper.equipWithStackableItem(player, "cherry", 9);
-		PlayerTestHelper.equipWithStackableItem(player, "banana", 5);
-		PlayerTestHelper.equipWithStackableItem(player, "banana", 5);
-		PlayerTestHelper.equipWithStackableItem(player, "grapes", 2);
-		PlayerTestHelper.equipWithStackableItem(player, "pear", 4);
-		PlayerTestHelper.equipWithStackableItem(player, "pomegranate", 2);
-		PlayerTestHelper.equipWithStackableItem(player, "watermelon", 1);
+	}
+	
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//	Now start a new test for Coralia that she should have option to accept everything.
+	
+	@Test
+	public void testQuestEverything() {
+		npc = SingletonRepository.getNPCList().get("Coralia");
+		en = npc.getEngine();
 		
 		// -----------------------------------------------
 
@@ -359,7 +356,7 @@ public class FruitsForCoraliaTest extends ZonePlayerAndNPCTestImpl {
 
 		// -----------------------------------------------
 
-		assertEquals("Are you willing to find me some fresh fruits for my hat yet?", getReply(npc));
+		assertEquals("Would you be kind enough to find me some fresh fruits for my hat? I'd be ever so grateful!", getReply(npc));
 
 		// -----------------------------------------------
 
@@ -367,7 +364,7 @@ public class FruitsForCoraliaTest extends ZonePlayerAndNPCTestImpl {
 
 		// -----------------------------------------------
 
-		assertEquals("That's wonderful! I'd like these fresh fruits: 4 #apples, 5 #bananas, 9 #cherries, 2 #'bunches of grapes', 4 #pears, 2 #pomegranates, and a #watermelon . You could give me one by one or everything once", getReply(npc));
+		assertEquals("That's wonderful! I'd like these fresh fruits: 4 #apples, 5 #bananas, 9 #cherries, 2 #'bunches of grapes', 4 #pears, 2 #pomegranates, and a #watermelon.", getReply(npc));
 
 		// -----------------------------------------------
 		en.step(player, "apples");
@@ -386,7 +383,7 @@ public class FruitsForCoraliaTest extends ZonePlayerAndNPCTestImpl {
 
 		// -----------------------------------------------
 
-
+		// This time prepare everything
 		
 		// -----------------------------------------------
 
@@ -398,29 +395,39 @@ public class FruitsForCoraliaTest extends ZonePlayerAndNPCTestImpl {
 
 		// -----------------------------------------------
 
-		assertEquals("Hello again. If you've brought me some fresh fruits for my #hat, I'll happily take them!", getReply(npc));
-
-		// -----------------------------------------------
-
 		en.step(player, "quest");
 
 		// -----------------------------------------------
 
-		assertEquals("I'd still like 5 #bananas, 9 #cherries, 2 #'bunches of grapes', 4 #pears, 2 #pomegranates, and a #watermelon. Have you brought any? or #everything?", getReply(npc));
+		assertEquals("I'd still like 4 #apples, 5 #bananas, 9 #cherries, 2 #'bunches of grapes', 4 #pears, 2 #pomegranates, and a #watermelon. Have you brought any or #everything? ", getReply(npc));
 
 		// -----------------------------------------------
-		
+		PlayerTestHelper.equipWithStackableItem(player, "apple", 4);
+		PlayerTestHelper.equipWithStackableItem(player, "banana", 5);
+		PlayerTestHelper.equipWithStackableItem(player, "cherry", 9);
+		PlayerTestHelper.equipWithStackableItem(player, "grapes", 2);
+		PlayerTestHelper.equipWithStackableItem(player, "pear", 4);//
+		PlayerTestHelper.equipWithStackableItem(player, "pomegranate", 2);
+		PlayerTestHelper.equipWithStackableItem(player, "watermelon", 11);
+
+		final int xp = player.getXP();
+		final double karma = player.getKarma();
+
+		// -----------------------------------------------
+
 		en.step(player, "everything");
 		
 		// -----------------------------------------------
 		
 		assertEquals("My hat has never looked so delightful! Thank you ever so much! Here, take this as a reward.", getReply(npc));
 
+
 		// [19:05] pinch earns 50 experience points.
+		assertThat(player.getKarma(), greaterThan(karma));
 		assertTrue(player.isEquipped("crepes suzette"));
 		assertTrue(player.isEquipped("minor potion"));
 		assertThat(player.getXP(), greaterThan(xp));
-		assertThat(player.getKarma(), greaterThan(karma));
+
 
 		// -----------------------------------------------
 
