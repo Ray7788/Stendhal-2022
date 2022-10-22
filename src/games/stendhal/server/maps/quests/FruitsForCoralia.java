@@ -484,20 +484,21 @@ public class FruitsForCoralia extends AbstractQuest {
     	}	
 
 		if (numFinished == 7)  {
-//			npc.say("My hat has never looked so delightful! Thank you ever so much! Here, take this as a reward.");
-//			player.addKarma(5.0);
-//			player.addXP(300);
-//			new EquipRandomAmountOfItemAction("crepes suzette", 1, 5).fire(player, null, null);
-//			new EquipRandomAmountOfItemAction("minor potion", 2, 8).fire(player, null, null);
-			new  MultipleActions(
-					new SetQuestAction(QUEST_SLOT, "done"),
-					new SayTextAction("My hat has never looked so delightful! Thank you ever so much! Here, take this as a reward."),
-					new IncreaseXPAction(300),
-					new IncreaseKarmaAction(5),
-					new EquipRandomAmountOfItemAction("crepes suzette", 1, 5),
-					new EquipRandomAmountOfItemAction("minor potion", 2, 8),
-					new SetQuestToTimeStampAction(QUEST_SLOT, 1)
-				).fire(player, sentence, npc);
+			npc.say("My hat has never looked so delightful! Thank you ever so much! Here, take this as a reward.");
+			player.addKarma(5.0);
+			player.addXP(300);
+			new EquipRandomAmountOfItemAction("crepes suzette", 1, 5).fire(player, null, null);
+			new EquipRandomAmountOfItemAction("minor potion", 2, 8).fire(player, null, null);
+//			npc.setCurrentState(ConversationStates.ATTENDING);
+//			new  MultipleActions(
+//					new SetQuestAction(QUEST_SLOT, "done"),
+//					new SayTextAction("My hat has never looked so delightful! Thank you ever so much! Here, take this as a reward."),
+//					new IncreaseXPAction(300),
+//					new IncreaseKarmaAction(5),
+//					new EquipRandomAmountOfItemAction("crepes suzette", 1, 5),
+//					new EquipRandomAmountOfItemAction("minor potion", 2, 8),
+//					new SetQuestToTimeStampAction(QUEST_SLOT, 1)
+//				).fire(player, sentence, npc);
 			
 		}
     	
