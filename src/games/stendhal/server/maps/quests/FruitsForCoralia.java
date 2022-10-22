@@ -346,7 +346,7 @@ public class FruitsForCoralia extends AbstractQuest {
 				    @Override
 					public void fire(final Player player, final Sentence sentence,
 						   final EventRaiser npc) {
-				    	checkForAllFruits(player, npc);	
+				    	checkForAllFruits(player, sentence, npc);	
 				    }
 		});	
 		
@@ -450,7 +450,7 @@ public class FruitsForCoralia extends AbstractQuest {
 	}
 	
 	
-	private void checkForAllFruits(final Player player, final EventRaiser npc) {
+	private void checkForAllFruits(final Player player, final Sentence sentence, final EventRaiser npc) {
 		// Coralia's need
 		final ItemCollection items = new ItemCollection();
 		
@@ -489,9 +489,6 @@ public class FruitsForCoralia extends AbstractQuest {
 //			player.addXP(300);
 //			new EquipRandomAmountOfItemAction("crepes suzette", 1, 5).fire(player, null, null);
 //			new EquipRandomAmountOfItemAction("minor potion", 2, 8).fire(player, null, null);
-//			player.add("crepes suzette", 1);
-//			player.equipOrPutOnGround("crepes suzette");
-//			player.add("minor potion", 6);
 			new  MultipleActions(
 					new SetQuestAction(QUEST_SLOT, "done"),
 					new SayTextAction("My hat has never looked so delightful! Thank you ever so much! Here, take this as a reward."),
@@ -500,7 +497,7 @@ public class FruitsForCoralia extends AbstractQuest {
 					new EquipRandomAmountOfItemAction("crepes suzette", 1, 5),
 					new EquipRandomAmountOfItemAction("minor potion", 2, 8),
 					new SetQuestToTimeStampAction(QUEST_SLOT, 1)
-				).fire(player, null, npc);
+				).fire(player, sentence, npc);
 			
 		}
     	
