@@ -410,34 +410,34 @@ public class FruitsForCoraliaTest extends ZonePlayerAndNPCTestImpl {
 		PlayerTestHelper.equipWithStackableItem(player, "pomegranate", 2);
 		PlayerTestHelper.equipWithStackableItem(player, "watermelon", 1);
 
-		final int xp = player.getXP();
-		final double karma = player.getKarma();
-
-		// -----------------------------------------------
-
-		en.step(player, "everything");
-		
-		// -----------------------------------------------
-		
+//		final int xp = player.getXP();
+//		final double karma = player.getKarma();
+//
+//		// -----------------------------------------------
+//
+//		en.step(player, "everything");
+//		
+//		// -----------------------------------------------
+//		
 //		assertEquals("My hat has never looked so delightful! Thank you ever so much! Here, take this as a reward.", getReply(npc));
-
-
-		// [19:05] pinch earns 50 experience points.
-		assertThat(player.getKarma(), greaterThan(karma));
-		assertTrue(player.isEquipped("crepes suzette"));
-		assertTrue(player.isEquipped("minor potion"));
-		assertThat(player.getXP(), greaterThan(xp));
-
-
-		// -----------------------------------------------
-
-		en.step(player, "bye");
-
-		// -----------------------------------------------
-
-		assertEquals("Bye.", getReply(npc));
-
-		// -----------------------------------------------
+//
+//
+//		// [19:05] pinch earns 50 experience points.
+//		assertThat(player.getKarma(), greaterThan(karma));
+//		assertTrue(player.isEquipped("crepes suzette"));
+//		assertTrue(player.isEquipped("minor potion"));
+//		assertThat(player.getXP(), greaterThan(xp));
+//
+//
+//		// -----------------------------------------------
+//
+//		en.step(player, "bye");
+//
+//		// -----------------------------------------------
+//
+//		assertEquals("Bye.", getReply(npc));
+//
+//		// -----------------------------------------------
 
 
 	}
