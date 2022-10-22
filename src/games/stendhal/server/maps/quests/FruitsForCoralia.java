@@ -330,12 +330,7 @@ public class FruitsForCoralia extends AbstractQuest {
 			new SetQuestToTimeStampAction(QUEST_SLOT, 1)
 		);
     	
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
-//		npc.add(ConversationStates.ATTENDING,
-//        	ConversationPhrases.combine(ConversationPhrases.QUEST_MESSAGES, "everything"),	// maybe needn't
-//        	new QuestActiveCondition(QUEST_SLOT),
-//        	completeAction,  null, null);
-		
+///////////////////////////////////////////////////////////////////////////////////////////////////////////		
 		// Perhaps player wants to give all the ingredients at once (everything)
 		npc.add(ConversationStates.QUESTION_2,
 				ConversationPhrases.combine(ConversationPhrases.QUEST_MESSAGES, "everything"),
@@ -373,9 +368,6 @@ public class FruitsForCoralia extends AbstractQuest {
 		return "Coralia";
 	}
 	
-////////////////////////////////////////////////////////////////  2022-10-17 16:45 
-	// To change the String into Map: name and amount
-//	@Override      REMEMBER TO SUPER             // 2022-10-17-21:18
 	
 /////////////////////////////////////////////////////////////////////////////////////////////////
 	/**
@@ -454,12 +446,12 @@ public class FruitsForCoralia extends AbstractQuest {
 		// Coralia's need
 		final ItemCollection items = new ItemCollection();
 		
-		//	clean
+		//	clean the string
 		items.addFromQuestStateString(NEEDED_ITEMS);
-		
+		// record how many kinds of fruits have be accepted by Coralia (correct fruit names and enough amounts)
 		int numFinished = 0;
 		
-		// Traverse Coralia's menu
+		// Traverse Coralia's menu, use TreeMap
     	for (final Map.Entry<String, Integer> item : items.entrySet()) {
     		String itemName = item.getKey();
     		ItemCollection missingItems = getMissingItems(player);
@@ -468,42 +460,31 @@ public class FruitsForCoralia extends AbstractQuest {
     		if ((missingCount != null) && (missingCount > 0)) {
     			if (dropItems(player, itemName, missingCount, QUEST_SLOT, npc)) {
     				missingItems = getMissingItems(player);
-    				
+    				// if player hasn't prepare enough amount of this fruit, remind the player: I need more
     				if (missingItems.containsKey(itemName) ) {
 	    				npc.say("You didn't have enough " + itemName + ".  I still need " + missingItems.get(itemName) +" more.");
 	    				break;
+    				}else {
+    				// player prepares enough this fruit kind
+    					numFinished += 1;
     				}
-    				numFinished += 1;	
-    				continue;
+    				// if player doesn't have this kind of fruit 
 				} else {
-					npc.say("You don't have " + Grammar.a_noun(itemName) + " with you!");	// This kind of fruits is accepted by Coralia, jump to next one
+					npc.say("You don't have " + Grammar.a_noun(itemName) + " with you!");	
 				}
 			}else {
 				continue;
 			}
     	}	
 
+    	// If player has all kinds of fruits and enough amounts, take this reward.
 		if (numFinished == 7)  {
 			npc.say("My hat has never looked so delightful! Thank you ever so much! Here, take this as a reward.");
 			player.addKarma(5.0);
 			player.addXP(300);
 			new EquipRandomAmountOfItemAction("crepes suzette", 1, 5).fire(player, null, null);
-			new EquipRandomAmountOfItemAction("minor potion", 2, 8).fire(player, null, null);
-//			npc.setCurrentState(ConversationStates.ATTENDING);
-//			new  MultipleActions(
-//					new SetQuestAction(QUEST_SLOT, "done"),
-//					new SayTextAction("My hat has never looked so delightful! Thank you ever so much! Here, take this as a reward."),
-//					new IncreaseXPAction(300),
-//					new IncreaseKarmaAction(5),
-//					new EquipRandomAmountOfItemAction("crepes suzette", 1, 5),
-//					new EquipRandomAmountOfItemAction("minor potion", 2, 8),
-//					new SetQuestToTimeStampAction(QUEST_SLOT, 1)
-//				).fire(player, sentence, npc);
-			
+			new EquipRandomAmountOfItemAction("minor potion", 2, 8).fire(player, null, null);			
 		}
-    	
-    	
-    	
 	}
 //////////////////////////////////////////////////////////////////////////////////////////////////
 }
