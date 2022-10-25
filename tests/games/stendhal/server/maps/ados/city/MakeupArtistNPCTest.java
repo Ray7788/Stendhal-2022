@@ -18,7 +18,7 @@ import utilities.ZonePlayerAndNPCTestImpl;
 
 public class MakeupArtistNPCTest extends ZonePlayerAndNPCTestImpl {
 	
-	private static final String ZONE_NAME = "int_ados_city";
+	private static final String ZONE_NAME = "testZone";
 	
 	private Player player;
 	private SpeakerNPC fidoreaNpc;
@@ -70,7 +70,7 @@ public class MakeupArtistNPCTest extends ZonePlayerAndNPCTestImpl {
 		assertTrue(fidoreaEngine.step(player, "hi"));
 		assertEquals("Hi, there. Do you need #help with anything?", getReply(fidoreaNpc));
 		
-		assertTrue(equipWithMoney(player, 500));
+		assertTrue(equipWithMoney(player, 120));
 		
 		assertTrue(fidoreaEngine.step(player, "buy dog mask"));
 		assertEquals("To buy a dog mask will cost 20. Do you want to buy it?", getReply(fidoreaNpc));
