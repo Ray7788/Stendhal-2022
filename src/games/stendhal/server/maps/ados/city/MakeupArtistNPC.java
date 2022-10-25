@@ -74,7 +74,15 @@ public class MakeupArtistNPC implements ZoneConfigurator {
 				addGoodbye("Bye, come back soon.");
 
 				final Map<String, Integer> priceList = new HashMap<String, Integer>();
-				priceList.put("mask", 20);
+//				priceList.put("mask", 20);
+				priceList.put("bear mask", 20);
+				priceList.put("frog mask", 20);
+				priceList.put("penguin mask", 20);
+				priceList.put("monkey mask", 20);
+				priceList.put("dog mask", 20);
+				priceList.put("fox mask", 20);
+				
+				
 				final OutfitChangerBehaviour behaviour = new OutfitChangerBehaviour(priceList, MINUTES_BEFORE_WEAR_OFF, "Your mask has worn off.");
 				new OutfitChangerAdder().addOutfitChanger(this, behaviour, "buy");
 			}

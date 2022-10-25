@@ -60,14 +60,24 @@ public class OutfitChangerBehaviour extends MerchantBehaviour {
 				new Outfit("dress=993"),
 				new Outfit("dress=994")));
 
-		outfitTypes.put("mask", Arrays.asList(
-				// hair & hat are set to "-1" so that they are not drawn over the mask
-				new Outfit("mask=994,hair=-1,hat=-1"),
-				new Outfit("mask=995,hair=-1,hat=-1"),
-				new Outfit("mask=996,hair=-1,hat=-1"),
-				new Outfit("mask=997,hair=-1,hat=-1"),
-				new Outfit("mask=998,hair=-1,hat=-1"),
-				new Outfit("mask=999,hair=-1,hat=-1")));
+//		outfitTypes.put("mask", Arrays.asList(
+//				// hair & hat are set to "-1" so that they are not drawn over the mask
+//				new Outfit("mask=994,hair=-1,hat=-1"),
+//				new Outfit("mask=995,hair=-1,hat=-1"),
+//				new Outfit("mask=996,hair=-1,hat=-1"),
+//				new Outfit("mask=997,hair=-1,hat=-1"),
+//				new Outfit("mask=998,hair=-1,hat=-1"),
+//				new Outfit("mask=999,hair=-1,hat=-1")));
+		
+		//change mask list
+		outfitTypes.put("bear mask", Arrays.asList(new Outfit("mask=994,hair=-1,hat=-1")));
+		outfitTypes.put("frog mask", Arrays.asList(new Outfit("mask=995,hair=-1,hat=-1")));
+		outfitTypes.put("penguin mask", Arrays.asList(new Outfit("mask=996,hair=-1,hat=-1")));
+		outfitTypes.put("monkey mask", Arrays.asList(new Outfit("mask=997,hair=-1,hat=-1")));
+		outfitTypes.put("dog mask", Arrays.asList(new Outfit("mask=998,hair=-1,hat=-1")));
+		outfitTypes.put("fox mask", Arrays.asList(new Outfit("mask=999,hair=-1,hat=-1")));
+		
+		
 
 		// wedding dress for brides
 		// it seems this must be an array as list even though it's only one item
