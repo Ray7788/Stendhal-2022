@@ -18,7 +18,7 @@ import utilities.ZonePlayerAndNPCTestImpl;
 
 public class MakeupArtistNPCTest extends ZonePlayerAndNPCTestImpl {
 	
-	private static final String ZONE_NAME = "testZone";
+	private static final String ZONE_NAME = "fidoreaZone";
 	
 	private Player player;
 	private SpeakerNPC fidoreaNpc;
