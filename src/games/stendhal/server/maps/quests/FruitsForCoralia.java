@@ -5,9 +5,12 @@ import java.util.List;
 import java.util.Map;
 
 import games.stendhal.common.grammar.Grammar;
+import games.stendhal.common.parser.Sentence;
+import games.stendhal.server.entity.item.Item;
 import games.stendhal.server.entity.npc.ChatAction;
 import games.stendhal.server.entity.npc.ConversationPhrases;
 import games.stendhal.server.entity.npc.ConversationStates;
+import games.stendhal.server.entity.npc.EventRaiser;
 import games.stendhal.server.entity.npc.SpeakerNPC;
 import games.stendhal.server.entity.npc.action.CollectRequestedItemsAction;
 import games.stendhal.server.entity.npc.action.EquipRandomAmountOfItemAction;
@@ -285,6 +288,7 @@ public class FruitsForCoralia extends AbstractQuest {
             ConversationStates.QUESTION_1,
             "I've never seen pomegranate trees growing wild, but I heard of a man living south of the great river cultivating them in his garden.",
             null);
+    
     }
 
 
@@ -314,7 +318,7 @@ public class FruitsForCoralia extends AbstractQuest {
 			ConversationStates.QUESTION_2,
 			"Wonderful, what fresh delights have you brought?",
 			null);
-
+		
 		// set up next step
     	ChatAction completeAction = new  MultipleActions(
 			new SetQuestAction(QUEST_SLOT, "done"),
@@ -325,7 +329,23 @@ public class FruitsForCoralia extends AbstractQuest {
 			new EquipRandomAmountOfItemAction("minor potion", 2, 8),
 			new SetQuestToTimeStampAction(QUEST_SLOT, 1)
 		);
-
+    	
+///////////////////////////////////////////////////////////////////////////////////////////////////////////		
+		// Perhaps player wants to give all the ingredients at once (everything)
+		npc.add(ConversationStates.QUESTION_2,
+				ConversationPhrases.combine(ConversationPhrases.QUEST_MESSAGES, "everything"),
+				new QuestActiveCondition(QUEST_SLOT),
+				ConversationStates.QUESTION_2,
+				null,
+				new ChatAction() {
+				    @Override
+					public void fire(final Player player, final Sentence sentence,
+						   final EventRaiser npc) {
+				    	checkForAllFruits(player, sentence, npc);	
+				    }
+		});	
+		
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
     	// add triggers for the item names
     	final ItemCollection items = new ItemCollection();
     	items.addFromQuestStateString(NEEDED_ITEMS);
@@ -347,4 +367,124 @@ public class FruitsForCoralia extends AbstractQuest {
 	public String getNPCName() {
 		return "Coralia";
 	}
+	
+	
+/////////////////////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Drop specified amount of given item. If player doesn't have enough items,
+	 * all carried ones will be dropped and number of missing items is updated.
+	 *
+	 * @param player    player
+	 * @param itemName name
+	 * @param itemCount count
+	 * @param questSlot quest
+	 * @return true if something was dropped
+	 */
+	boolean dropItems(final Player player, String itemName, int itemCount, String questSlot, final EventRaiser npc) {
+		boolean result = false;
+
+		// parse the quest state into a list of still missing items
+		final ItemCollection itemsTodo = new ItemCollection();
+
+		itemsTodo.addFromQuestStateString(player.getQuest(questSlot));
+
+		if (player.drop(itemName, itemCount)) {
+			if (itemsTodo.removeItem(itemName, itemCount)) {
+				result = true;
+			}
+		} else {
+			/*
+			 * handle the cases the player has part of the items or all divided
+			 * in different slots
+			 */
+			final List<Item> items = player.getAllEquipped(itemName);
+			if (items != null) {
+				for (final Item item : items) {
+					final int quantity = item.getQuantity();
+					final int n = Math.min(itemCount, quantity);
+
+					if (player.drop(itemName, n)) {
+						itemCount -= n;
+
+						if (itemsTodo.removeItem(itemName, n)) {
+							result = true;
+							
+						}
+					}
+
+					if (itemCount == 0) {
+						result = true;
+						break;
+					}
+				}
+			}
+		}
+
+		 // update the quest state if some items are handed over
+		if (result) {
+			player.setQuest(questSlot, itemsTodo.toStringForQuestState());
+		}
+
+		return result;
+	}
+	
+	/**
+	 * Returns all items that the given player still has to bring to complete the quest.
+	 *
+	 * @param player The player doing the quest
+	 * @return A list of item names
+	 */
+	ItemCollection getMissingItems(final Player player) {
+		final ItemCollection missingItems = new ItemCollection();
+		missingItems.addFromQuestStateString(player.getQuest(QUEST_SLOT));
+		
+		return missingItems;
+	}
+	
+	
+	private void checkForAllFruits(final Player player, final Sentence sentence, final EventRaiser npc) {
+		// Coralia's need
+		final ItemCollection items = new ItemCollection();
+		
+		//	clean the string
+		items.addFromQuestStateString(NEEDED_ITEMS);
+		// record how many kinds of fruits have be accepted by Coralia (correct fruit names and enough amounts)
+		int numFinished = 0;
+		
+		// Traverse Coralia's menu, use TreeMap
+    	for (final Map.Entry<String, Integer> item : items.entrySet()) {
+    		String itemName = item.getKey();
+    		ItemCollection missingItems = getMissingItems(player);
+    		final Integer missingCount = missingItems.get(itemName);
+    		
+    		if ((missingCount != null) && (missingCount > 0)) {
+    			if (dropItems(player, itemName, missingCount, QUEST_SLOT, npc)) {
+    				missingItems = getMissingItems(player);
+    				// if player hasn't prepare enough amount of this fruit, remind the player: I need more
+    				if (missingItems.containsKey(itemName) ) {
+	    				npc.say("You didn't have enough " + itemName + ".  I still need " + missingItems.get(itemName) +" more.");
+	    				break;
+    				}else {
+    				// player prepares enough this fruit kind
+    					numFinished += 1;
+    				}
+    				// if player doesn't have this kind of fruit 
+				} else {
+					npc.say("You don't have " + Grammar.a_noun(itemName) + " with you!");	
+				}
+			}else {
+				continue;
+			}
+    	}	
+
+    	// If player has all kinds of fruits and enough amounts, take this reward.
+		if (numFinished == 7)  {
+			npc.say("My hat has never looked so delightful! Thank you ever so much! Here, take this as a reward.");
+			player.addKarma(5.0);
+			player.addXP(300);
+			new EquipRandomAmountOfItemAction("crepes suzette", 1, 5).fire(player, null, null);
+			new EquipRandomAmountOfItemAction("minor potion", 2, 8).fire(player, null, null);			
+		}
+	}
+//////////////////////////////////////////////////////////////////////////////////////////////////
 }
