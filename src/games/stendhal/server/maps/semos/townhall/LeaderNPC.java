@@ -74,6 +74,9 @@ public class LeaderNPC implements ZoneConfigurator {
 					        		if (weapon.getName().endsWith(" hand sword")) {
 					        			// this is a special case, we deal with explicitly
 					        			comment = "I see you use twin swords. They have a superb damage capability but as you cannot wear a shield with them, you will find it harder to defend yourself if attacked.";
+					        			
+					        		} else if (player.isEquipped("rod of the gm")) {
+					        			comment = "I see you have the rod of the gm. You must have heightened powers, only very special people can get this weapon. I cannot critique a weapon as stong as this, nothing is stronger!";
 					        		} else if (damage >= 5) {
 					        			comment = "That " + weapon.getName() + " is a powerful weapon, it has a good damage to rate ratio.";
 					        			if (weapon.getAttackRate() < 3) {
