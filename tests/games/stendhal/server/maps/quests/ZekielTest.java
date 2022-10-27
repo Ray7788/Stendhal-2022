@@ -12,13 +12,13 @@
  ***************************************************************************/
 package games.stendhal.server.maps.quests;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.Matchers.greaterThan;
+//import static org.hamcrest.CoreMatchers.is;
+//import static org.hamcrest.CoreMatchers.not;
+//import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+//import static org.junit.Assert.assertFalse;
+//import static org.junit.Assert.assertThat;
+//import static org.junit.Assert.assertTrue;
 import static utilities.SpeakerNPCTestHelper.getReply;
 
 import org.junit.Before;
@@ -27,7 +27,7 @@ import org.junit.Test;
 
 import games.stendhal.server.core.engine.SingletonRepository;
 import games.stendhal.server.core.engine.StendhalRPZone;
-import games.stendhal.server.entity.npc.ConversationStates;
+//import games.stendhal.server.entity.npc.ConversationStates;
 import games.stendhal.server.entity.npc.SpeakerNPC;
 import games.stendhal.server.entity.npc.fsm.Engine;
 import games.stendhal.server.entity.player.Player;
@@ -40,8 +40,8 @@ public class ZekielTest {
 	private static final String QUEST_SLOT = "zekiels_practical_test";
 	// better: use the one from quest and make it visible
 	//private static final String NEEDED_ITEMS = "emerald=1;obsidian=1;sapphire=1;carbuncle=2;gold bar=20;mithril bar=1;shadow legs=1";
-	private static final int REQUIRED_BEESWAX = 6;
-	private static final int REQUIRED_IRON = 2;
+	//private static final int REQUIRED_BEESWAX = 6;
+	//private static final int REQUIRED_IRON = 2;
 	private Player player = null;
 	private SpeakerNPC npc = null;
 	private Engine en = null;
@@ -96,7 +96,8 @@ public class ZekielTest {
 		en.step(player, "hi");
 		assertEquals("Finally !! YOu have gotten all the items required for me to summon the candles. YOu may start the Practical test now", getReply(npc));
 		en.step(player, "send");
-		//assertEquals("So...looks like you want to help me?", getReply(npc));
+		assertEquals("YOu cant drop candles after this stage.", getReply(npc));
+		assertEquals("first_step",player.getQuest(QUEST_SLOT));
 		//en.step(player, "yes");
 		//assertEquals("My wife is living in Semos City. She loves gems. Can you bring me some #gems that I need to make a pair of precious #legs?", getReply(npc));
 		//en.step(player, "no");
@@ -106,7 +107,7 @@ public class ZekielTest {
 
 		// -----------------------------------------------
 
-		player.setPosition(26, 15);
+		//player.setPosition(26, 15);
 		//en.setPlayer
 //		en.step(player, "hi");
 //		assertEquals("Go away!", getReply(npc));
