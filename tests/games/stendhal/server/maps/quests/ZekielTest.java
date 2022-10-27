@@ -94,7 +94,7 @@ public class ZekielTest extends ZonePlayerAndNPCTestImpl{
 		// [23:00] Changed the state of quest 'sad_scientist' from 'done' to 'null'
 		// [23:00] Script "AlterQuest.class" was successfully executed.
 		en.step(player, "hi");
-		assertEquals("Hello stranger! I am Zekiel the #guardian", getReply(npc));
+		assertEquals("Greetings Stranger! I am Zekiel the #guardian", getReply(npc));
 		en.step(player, "test");
 		assertEquals("The practical test will be your #quest from me", getReply(npc));
 		en.step(player, "quest");
