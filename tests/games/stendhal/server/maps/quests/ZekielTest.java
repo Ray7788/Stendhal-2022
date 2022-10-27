@@ -26,14 +26,14 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import games.stendhal.server.core.engine.SingletonRepository;
-import games.stendhal.server.core.engine.StendhalRPZone;
+//import games.stendhal.server.core.engine.StendhalRPZone;
 //import games.stendhal.server.entity.npc.ConversationStates;
 import games.stendhal.server.entity.npc.SpeakerNPC;
 import games.stendhal.server.entity.npc.fsm.Engine;
 import games.stendhal.server.entity.player.Player;
 //import games.stendhal.server.maps.kalavan.castle.SadScientistNPC;
 import games.stendhal.server.maps.semos.wizardstower.WizardsGuardStatueNPC;
-//import games.stendhal.server.maps.semos.wizardstower.WizardsGuardStatueSpireNPC;
+import games.stendhal.server.maps.semos.wizardstower.WizardsGuardStatueSpireNPC;
 //import games.stendhal.server.maps.semos.townhall.MayorNPC;
 import utilities.PlayerTestHelper;
 import utilities.QuestHelper;
@@ -59,6 +59,7 @@ public class ZekielTest extends ZonePlayerAndNPCTestImpl{
 		setNpcNames("Zekiel the guardian");
 		setZoneForPlayer("admin_test");
 		addZoneConfigurator(new WizardsGuardStatueNPC(), "admin_test");
+		addZoneConfigurator(new WizardsGuardStatueSpireNPC(), "admin_test");
 	}
 	@Before
 	@Override
