@@ -31,8 +31,9 @@ import games.stendhal.server.core.engine.StendhalRPZone;
 import games.stendhal.server.entity.npc.SpeakerNPC;
 import games.stendhal.server.entity.npc.fsm.Engine;
 import games.stendhal.server.entity.player.Player;
-import games.stendhal.server.maps.kalavan.castle.SadScientistNPC;
-import games.stendhal.server.maps.semos.townhall.MayorNPC;
+//import games.stendhal.server.maps.kalavan.castle.SadScientistNPC;
+import games.stendhal.server.maps.semos.wizardstower.WizardsGuardStatueNPC;
+//import games.stendhal.server.maps.semos.townhall.MayorNPC;
 import utilities.PlayerTestHelper;
 import utilities.QuestHelper;
 
@@ -56,8 +57,10 @@ public class ZekielTest {
 
 		final StendhalRPZone zone = new StendhalRPZone("admin_test");
 
-		new SadScientistNPC().configureZone(zone, null);
-		new MayorNPC().configureZone(zone, null);
+		//new SadScientistNPC().configureZone(zone, null);
+		//new MayorNPC().configureZone(zone, null);
+		
+		new WizardsGuardStatueNPC().configureZone(zone, null);
 
 		AbstractQuest quest = new ZekielsPracticalTestQuest();
 		quest.addToWorld();
