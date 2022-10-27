@@ -98,9 +98,9 @@ public class ZekielTest extends ZonePlayerAndNPCTestImpl{
 		en.step(player, "test");
 		assertEquals("The practical test will be your #quest from me", getReply(npc));
 		en.step(player, "quest");
-		assertEquals("You need 6 candles. Bring me 6 #beeswax and 2 #iron and then I shall summon candles for you. Then you can start the practical test.", getReply(npc));
+		assertEquals("First you need six magic candles. Bring me 6 pieces of #beeswax and 2 pieces of #iron, then I will summon the candles for you. After this you can start the practical test.", getReply(npc));
 		en.step(player, "bye");
-		assertEquals("Bubye!", getReply(npc));
+		assertEquals("SO long!", getReply(npc));
 
 		// -----------------------------------------------
 		//getting item for test
