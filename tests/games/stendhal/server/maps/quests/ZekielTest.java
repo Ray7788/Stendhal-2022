@@ -108,7 +108,7 @@ public class ZekielTest extends ZonePlayerAndNPCTestImpl{
 		PlayerTestHelper.equipWithStackableItem(player, "iron", 2);
 		
 		en.step(player, "hi");
-		assertEquals("Greetings, finally you have brought me all ingredients that I need to summon the magic candles. Now you an #start with the practical test.", getReply(npc));
+		assertEquals("Greetings, finally you have brought me all ingredients that I need to summon the magic candles. Now you can #start with the practical test.", getReply(npc));
 		en.step(player, "send");
 		assertEquals("You cannot drop candles after this stage..", getReply(npc));
 		assertEquals("first_step",player.getQuest(QUEST_SLOT));
