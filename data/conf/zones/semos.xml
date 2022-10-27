@@ -655,6 +655,10 @@ Unfortunately I will not be able to visit Athor this year. I have run into a bit
     <configurator class-name="games.stendhal.server.core.config.zone.NoTeleportIn"/>
     <configurator
       class-name="games.stendhal.server.maps.semos.wizardstower.FirstFloorCreatures"/>
+    <configurator
+      class-name="games.stendhal.server.core.config.zone.NoItemMove">
+      <parameter name = "message">You can't drop candles here! </parameter>
+    </configurator>
 
     <entity x="15" y="15">
       <implementation
@@ -741,6 +745,10 @@ Unfortunately I will not be able to visit Athor this year. I have run into a bit
     <configurator class-name="games.stendhal.server.core.config.zone.NoTeleportIn"/>
     <configurator
       class-name="games.stendhal.server.maps.semos.wizardstower.SecondFloorCreatures"/>
+      <configurator
+      class-name="games.stendhal.server.core.config.zone.NoItemMove">
+      <parameter name = "message">You can't drop candles here! </parameter>
+    </configurator>
 
     <entity x="15" y="15">
       <implementation
@@ -814,6 +822,10 @@ Unfortunately I will not be able to visit Athor this year. I have run into a bit
     <configurator class-name="games.stendhal.server.core.config.zone.NoTeleportIn"/>
     <configurator
       class-name="games.stendhal.server.maps.semos.wizardstower.ThirdFloorCreatures"/>
+      <configurator
+      class-name="games.stendhal.server.core.config.zone.NoItemMove">
+      <parameter name = "message">You can't drop candles here! </parameter>
+    </configurator>
 
     <entity x="15" y="15">
       <implementation
@@ -887,6 +899,10 @@ Unfortunately I will not be able to visit Athor this year. I have run into a bit
     <configurator class-name="games.stendhal.server.core.config.zone.NoTeleportIn"/>
     <configurator
       class-name="games.stendhal.server.maps.semos.wizardstower.FourthFloorCreatures"/>
+      <configurator
+      class-name="games.stendhal.server.core.config.zone.NoItemMove">
+      <parameter name = "message">You can't drop candles here! </parameter>
+    </configurator>
 
     <entity x="15" y="15">
       <implementation
@@ -960,6 +976,10 @@ Unfortunately I will not be able to visit Athor this year. I have run into a bit
     <configurator class-name="games.stendhal.server.core.config.zone.NoTeleportIn"/>
     <configurator
       class-name="games.stendhal.server.maps.semos.wizardstower.FifthFloorCreatures"/>
+      <configurator
+      class-name="games.stendhal.server.core.config.zone.NoItemMove">
+      <parameter name = "message">You can't drop candles here! </parameter>
+    </configurator>
 
     <entity x="15" y="15">
       <implementation
@@ -1033,6 +1053,10 @@ Unfortunately I will not be able to visit Athor this year. I have run into a bit
     <configurator class-name="games.stendhal.server.core.config.zone.NoTeleportIn"/>
     <configurator
       class-name="games.stendhal.server.maps.semos.wizardstower.SixthFloorCreatures"/>
+      <configurator
+      class-name="games.stendhal.server.core.config.zone.NoItemMove">
+      <parameter name = "message">You can't drop candles here! </parameter>
+    </configurator>
 
     <entity x="15" y="15">
       <implementation
