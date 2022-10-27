@@ -110,7 +110,7 @@ public class ZekielTest extends ZonePlayerAndNPCTestImpl{
 		en.step(player, "hi");
 		assertEquals("Greetings, finally you have brought me all ingredients that I need to summon the magic candles. Now you can #start with the practical test.", getReply(npc));
 		en.step(player, "send");
-		assertEquals("You cannot drop candles after this stage..", getReply(npc));
+		assertEquals("You cannot drop candles after this stage.", getReply(npc));
 		assertEquals("first_step",player.getQuest(QUEST_SLOT));
 		//en.step(player, "yes");
 		//assertEquals("My wife is living in Semos City. She loves gems. Can you bring me some #gems that I need to make a pair of precious #legs?", getReply(npc));
