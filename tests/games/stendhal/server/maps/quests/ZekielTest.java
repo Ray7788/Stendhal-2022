@@ -33,11 +33,13 @@ import games.stendhal.server.entity.npc.fsm.Engine;
 import games.stendhal.server.entity.player.Player;
 //import games.stendhal.server.maps.kalavan.castle.SadScientistNPC;
 import games.stendhal.server.maps.semos.wizardstower.WizardsGuardStatueNPC;
+//import games.stendhal.server.maps.semos.wizardstower.WizardsGuardStatueSpireNPC;
 //import games.stendhal.server.maps.semos.townhall.MayorNPC;
 import utilities.PlayerTestHelper;
 import utilities.QuestHelper;
+import utilities.ZonePlayerAndNPCTestImpl;
 
-public class ZekielTest {
+public class ZekielTest extends ZonePlayerAndNPCTestImpl{
 	private static final String QUEST_SLOT = "zekiels_practical_test";
 	// better: use the one from quest and make it visible
 	//private static final String NEEDED_ITEMS = "emerald=1;obsidian=1;sapphire=1;carbuncle=2;gold bar=20;mithril bar=1;shadow legs=1";
@@ -50,17 +52,25 @@ public class ZekielTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		QuestHelper.setUpBeforeClass();
+		setupZone("admin_test");
 	}
 
+	public ZekielTest() {
+		setNpcNames("Zekiel the guardian");
+		setZoneForPlayer("admin_test");
+		addZoneConfigurator(new WizardsGuardStatueNPC(), "admin_test");
+	}
 	@Before
-	public void setUp() {
+	@Override
+	public void setUp() throws Exception{
 
-		final StendhalRPZone zone = new StendhalRPZone("admin_test");
+		//final StendhalRPZone zone = new StendhalRPZone("admin_test");
+		super.setUp();
 
 		//new SadScientistNPC().configureZone(zone, null);
 		//new MayorNPC().configureZone(zone, null);
 		
-		new WizardsGuardStatueNPC().configureZone(zone, null);
+		//new WizardsGuardStatueNPC().configureZone(zone, null);
 
 		AbstractQuest quest = new ZekielsPracticalTestQuest();
 		quest.addToWorld();
