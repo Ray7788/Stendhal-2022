@@ -196,6 +196,7 @@ ask for horse hair.
 		 */
 		SpeakerNPC npc = npcs.get("Karl");
 		
+		
 		npc.add(ConversationStates.ATTENDING,
 				"horse hair",
 				new AndCondition(new QuestInStateCondition(QUEST_SLOT,"hair"),
