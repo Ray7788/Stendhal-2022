@@ -48,14 +48,13 @@ public abstract class SpeakerNPCTestHelper {
 	 */
 	public static String getReply(final SpeakerNPC npc) {
 		String reply = null;
-		
+
 		for (RPEvent event : npc.events()) {
-			
 			if (event.getName().equals(Events.PUBLIC_TEXT)) {
 				reply = event.get("text");
 			}
 		}
-		
+
 		npc.clearEvents();
 
 		return reply;
