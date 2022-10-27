@@ -150,7 +150,6 @@ public class BowsForOuchitTest {
 		en.step(player, "task");
 		assertEquals("I don't have time for those things, sorry. Working.. working.. working..", getReply(npc));
 
-		// he doesn't seem to reply to horse hairs
 		en.step(player, "horse hair");
 		assertEquals("Hello, hello! Ouchit needs more horse hairs from my horses? No problem, here you are. Send Ouchit greetings from me.", getReply(npc));
 		player.drop("horse hair");
