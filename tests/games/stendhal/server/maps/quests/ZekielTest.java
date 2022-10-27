@@ -100,7 +100,7 @@ public class ZekielTest extends ZonePlayerAndNPCTestImpl{
 		en.step(player, "quest");
 		assertEquals("First you need six magic candles. Bring me six pieces of #beeswax and two pieces of #iron, then I will summon the candles for you. After this you can start the practical test.", getReply(npc));
 		en.step(player, "bye");
-		assertEquals("SO long!", getReply(npc));
+		assertEquals("So long!", getReply(npc));
 
 		// -----------------------------------------------
 		//getting item for test
@@ -108,9 +108,9 @@ public class ZekielTest extends ZonePlayerAndNPCTestImpl{
 		PlayerTestHelper.equipWithStackableItem(player, "iron", 2);
 		
 		en.step(player, "hi");
-		assertEquals("Finally !! YOu have gotten all the items required for me to summon the candles. YOu may start the Practical test now", getReply(npc));
+		assertEquals("Greetings, finally you have brought me all ingredients that I need to summon the magic candles. Now you an #start with the practical test.", getReply(npc));
 		en.step(player, "send");
-		assertEquals("YOu cant drop candles after this stage.", getReply(npc));
+		assertEquals("You cannot drop candles after this stage..", getReply(npc));
 		assertEquals("first_step",player.getQuest(QUEST_SLOT));
 		//en.step(player, "yes");
 		//assertEquals("My wife is living in Semos City. She loves gems. Can you bring me some #gems that I need to make a pair of precious #legs?", getReply(npc));
