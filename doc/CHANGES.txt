@@ -57,6 +57,9 @@ Changelog
 *misc*
 - fixed exploit that allowed players to repair emerald ring for free using Sawyer
 
+*changes to release*
+- bugs are fixed in the game each bug in different branch and all merged in main branch at the end 
+
 
 1.39
 

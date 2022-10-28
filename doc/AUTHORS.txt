@@ -201,3 +201,25 @@ Notable contributors:
 - SnowFlake
   · Maps maker
   · NPCs
+  - Khawla Ali Hasan Ali Almarzooqi 
+  · bug:Haunchy doesn't accept charcoal
+    - Amal Manzoor
+  · bug:Cheating on Zekiel's Practical Test
+      - Emre Yildirim
+  · bug:Why does he ignore "horse hair"
+        - Niannu Gao
+  · bug:Players can’t choose what masks they get from Fidorea
+          - Rui Xu
+  · bug:Coralia should have option to accept everything
+            - Matthew Taylor-Shaw
+  · bug: Lieutenant Drilenun suggests that a better weapon exists.... BUT HE IS WRONG
+  - Nouf Aldighalby
+  · bug:Fish Soup for Hughie
+    - Keshav Gupta
+  · bug: Sheep pet prevents travel between zones
+  
+  
+  
+  
+  
+  
