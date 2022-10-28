@@ -12,6 +12,7 @@
  ***************************************************************************/
 package games.stendhal.server.entity.mapstuff.portal;
 
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
@@ -27,6 +28,7 @@ import marauroa.common.Log4J;
 import utilities.PlayerTestHelper;
 import utilities.RPClass.EntityTestHelper;
 import utilities.RPClass.PortalTestHelper;
+import games.stendhal.server.entity.creature.Sheep;
 
 public class PortalTest {
 
@@ -96,6 +98,8 @@ public class PortalTest {
 		final Player player = PlayerTestHelper.createPlayer("player");
 		assertFalse("port has no destination", port.usePortal(player));
 	}
+	
+	
 
 	/**
 	 * Tests for usePortalNotNextToPlayer.
@@ -208,5 +212,41 @@ public class PortalTest {
 		final Player player = PlayerTestHelper.createPlayer("player");
 		port.onUsedBackwards(player, player.hasPath());
 	}
+	
+	@Test
+    public final void testSheepPreventsPortalChange() {
+        final Portal startP = new Portal();
+        final StendhalRPZone start_zone = new StendhalRPZone("start_zone");
+        final Object obj = new Object();
+        final Portal endP = new Portal();
+        final StendhalRPZone end_zone = new StendhalRPZone("end_zone");
+        final Player jim = PlayerTestHelper.createPlayer("Jim");
+        
+        startP.setPosition(1, 1);      
+        start_zone.collisionMap.init(50, 50);
+        startP.setDestination("end_zone", obj);
+
+        endP.setIdentifier(obj);
+        
+        start_zone.add(startP);
+
+        start_zone.add(jim);
+
+        final Sheep sheep = new Sheep(jim);
+        start_zone.add(sheep);
+
+        end_zone.add(endP);
+
+        MockStendlRPWorld.get().addRPZone(start_zone);
+        MockStendlRPWorld.get().addRPZone(end_zone);
+
+        jim.setPosition(1, 2);
+        sheep.setPosition(50, 50);
+        
+        assertTrue("player is in start_zone", jim.getZone().equals(start_zone));
+        assertTrue("sheep is in start_zone", sheep.getZone().equals(start_zone));
+        assertTrue("player can teleport", startP.usePortal(jim));
+
+    }
 
 }

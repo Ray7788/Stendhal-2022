@@ -1680,7 +1680,8 @@ public class Player extends DressedEntity implements UseListener {
 		final Sheep sheep = getSheep();
 
 		if (sheep != null) {
-			if (squaredDistance(sheep) > 7 * 7) {
+			if (squaredDistance(sheep) > 70 * 70) {
+				
 				return false;
 			}
 		}
@@ -1688,7 +1689,7 @@ public class Player extends DressedEntity implements UseListener {
 		final Pet pet = getPet();
 
 		if (pet != null) {
-			if (squaredDistance(pet) > 7 * 7) {
+			if (squaredDistance(pet) > 70 * 70) {
 				return false;
 			}
 		}
