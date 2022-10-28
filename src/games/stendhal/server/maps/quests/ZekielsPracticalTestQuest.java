@@ -265,8 +265,9 @@ public class ZekielsPracticalTestQuest extends AbstractQuest {
 			new AndCondition(
 					new QuestInStateCondition(QUEST_SLOT,"candles_done"),
 					new NotCondition(new PlayerHasItemWithHimCondition("candle"))),
-			ConversationStates.IDLE,
-			null,
+			ConversationStates.ATTENDING,
+			"You cannot drop candles after this stage.",
+			//null,
 			new MultipleActions(
 					new SetQuestAction(QUEST_SLOT, "first_step"),
 					new TeleportAction("int_semos_wizards_tower_1", 15, 16, Direction.DOWN)));
