@@ -62,6 +62,26 @@
       <slot name="trade"/>
     </equipable>
   </item>
+  
+  
+  <item name="disguise armor">
+    <type class="armor" subclass="blue_armor" tileid="-1"/>
+    <description>You see a suit of disguise armor, which is similar to soldiers. The colour is stunning azure.</description>
+    <implementation class-name="games.stendhal.server.entity.item.Item"/>
+    <attributes>
+      <def value="199"/>
+      <min_level value="0"/>
+    </attributes>
+    <weight value="35.0"/>
+    <value value="3999"/>
+    <equipable>
+      <slot name="ground"/>
+      <slot name="content"/>
+      <slot name="armor"/>
+      <slot name="bag"/>
+      <slot name="trade"/>
+    </equipable>
+  </item>
 
   <item name="chain armor">
     <type class="armor" subclass="chain_armor" tileid="-1"/>
