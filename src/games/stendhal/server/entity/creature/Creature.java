@@ -46,6 +46,7 @@ import games.stendhal.server.entity.creature.impl.heal.HealerBehaviourFactory;
 import games.stendhal.server.entity.creature.impl.idle.IdleBehaviour;
 import games.stendhal.server.entity.creature.impl.idle.IdleBehaviourFactory;
 import games.stendhal.server.entity.item.Corpse;
+import games.stendhal.server.entity.item.Equipment;
 import games.stendhal.server.entity.item.Item;
 import games.stendhal.server.entity.item.StackableItem;
 import games.stendhal.server.entity.mapstuff.spawner.CreatureRespawnPoint;
@@ -731,6 +732,11 @@ public class Creature extends NPC {
 			if (enemy.isInvisibleToCreatures()) {
 				continue;
 			}
+			
+			if (enemy.hasSlot("armor") && enemy.isEquippedItemInSlot("armor", "disguise armor")) {
+				if (this.get("class") != null && this.get("class").equals(Equipment.getHiddenFrom()))
+					continue;
+			}
 
 			final double squaredDistance = this.squaredDistance(enemy);
 			if (squaredDistance <= (range * range)) {
@@ -784,7 +790,12 @@ public class Creature extends NPC {
 			if (playerOrFriend.isInvisibleToCreatures()) {
 				continue;
 			}
-
+			
+			if (playerOrFriend.hasSlot("armor") && playerOrFriend.isEquippedItemInSlot("armor", "disguise armor")) {
+				if (this.get("class") != null && this.get("class").equals(Equipment.getHiddenFrom()))
+					continue;
+			}
+			
 			if (playerOrFriend.getZone() == getZone()) {
 				final int fx = playerOrFriend.getX();
 				final int fy = playerOrFriend.getY();
@@ -1188,3 +1199,4 @@ public class Creature extends NPC {
 		return getZone() == player.getZone();
 	}
 }
+
