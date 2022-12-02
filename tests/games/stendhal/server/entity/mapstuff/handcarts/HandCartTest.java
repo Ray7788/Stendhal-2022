@@ -30,97 +30,97 @@ public class HandCartTest {
 
 	@Test
 	public final void testReset() {
-		HandCart hc = new HandCart();
-		hc.setPosition(0, 0);
+		HandCart h = new HandCart();
+		h.setPosition(0, 0);
 		StendhalRPZone z = new StendhalRPZone("test", 10, 10);
-		z.add(hc);
-		assertThat(Integer.valueOf(hc.getX()), is(Integer.valueOf(0)));
-		assertThat(Integer.valueOf(hc.getY()), is(Integer.valueOf(0)));
+		z.add(h);
+		assertThat(Integer.valueOf(h.getX()), is(Integer.valueOf(0)));
+		assertThat(Integer.valueOf(h.getY()), is(Integer.valueOf(0)));
 
-		hc.reset();
-		assertThat(Integer.valueOf(hc.getX()), is(Integer.valueOf(0)));
-		assertThat(Integer.valueOf(hc.getY()), is(Integer.valueOf(0)));
+		h.reset();
+		assertThat(Integer.valueOf(h.getX()), is(Integer.valueOf(0)));
+		assertThat(Integer.valueOf(h.getY()), is(Integer.valueOf(0)));
 
-		hc.put("x", 2);
-		hc.reset();
-		assertThat(Integer.valueOf(hc.getX()), is(Integer.valueOf(0)));
-		assertThat(Integer.valueOf(hc.getY()), is(Integer.valueOf(0)));
+		h.put("x", 2);
+		h.reset();
+		assertThat(Integer.valueOf(h.getX()), is(Integer.valueOf(0)));
+		assertThat(Integer.valueOf(h.getY()), is(Integer.valueOf(0)));
 
-		hc.put("y", 2);
-		hc.reset();
-		assertThat(Integer.valueOf(hc.getX()), is(Integer.valueOf(0)));
-		assertThat(Integer.valueOf(hc.getY()), is(Integer.valueOf(0)));
+		h.put("y", 2);
+		h.reset();
+		assertThat(Integer.valueOf(h.getX()), is(Integer.valueOf(0)));
+		assertThat(Integer.valueOf(h.getY()), is(Integer.valueOf(0)));
 
-		hc.put("x", 2);
-		hc.put("y", 2);
-		hc.reset();
-		assertThat(Integer.valueOf(hc.getX()), is(Integer.valueOf(0)));
-		assertThat(Integer.valueOf(hc.getY()), is(Integer.valueOf(0)));
+		h.put("x", 2);
+		h.put("y", 2);
+		h.reset();
+		assertThat(Integer.valueOf(h.getX()), is(Integer.valueOf(0)));
+		assertThat(Integer.valueOf(h.getY()), is(Integer.valueOf(0)));
 	}
 
 	@Test
 	public void testPush() {
-		HandCart hc = new HandCart();
-		hc.setPosition(0, 0);
+		HandCart h = new HandCart();
+		h.setPosition(0, 0);
 		StendhalRPZone z = new StendhalRPZone("test", 10, 10);
 		Player p = PlayerTestHelper.createPlayer("pusher");
-		z.add(hc);
-		assertThat(Integer.valueOf(hc.getX()), is(Integer.valueOf(0)));
-		assertThat(Integer.valueOf(hc.getY()), is(Integer.valueOf(0)));
+		z.add(h);
+		assertThat(Integer.valueOf(h.getX()), is(Integer.valueOf(0)));
+		assertThat(Integer.valueOf(h.getY()), is(Integer.valueOf(0)));
 
-		hc.push(p, Direction.RIGHT);
-		assertThat(Integer.valueOf(hc.getX()), is(Integer.valueOf(1)));
-		assertThat(Integer.valueOf(hc.getY()), is(Integer.valueOf(0)));
+		h.push(p, Direction.RIGHT);
+		assertThat(Integer.valueOf(h.getX()), is(Integer.valueOf(1)));
+		assertThat(Integer.valueOf(h.getY()), is(Integer.valueOf(0)));
 
-		hc.push(p, Direction.LEFT);
-		assertThat(Integer.valueOf(hc.getX()), is(Integer.valueOf(0)));
-		assertThat(Integer.valueOf(hc.getY()), is(Integer.valueOf(0)));
+		h.push(p, Direction.LEFT);
+		assertThat(Integer.valueOf(h.getX()), is(Integer.valueOf(0)));
+		assertThat(Integer.valueOf(h.getY()), is(Integer.valueOf(0)));
 
-		hc.push(p, Direction.DOWN);
-		assertThat(Integer.valueOf(hc.getX()), is(Integer.valueOf(0)));
-		assertThat(Integer.valueOf(hc.getY()), is(Integer.valueOf(1)));
+		h.push(p, Direction.DOWN);
+		assertThat(Integer.valueOf(h.getX()), is(Integer.valueOf(0)));
+		assertThat(Integer.valueOf(h.getY()), is(Integer.valueOf(1)));
 
-		hc.push(p, Direction.UP);
-		assertThat(Integer.valueOf(hc.getX()), is(Integer.valueOf(0)));
-		assertThat(Integer.valueOf(hc.getY()), is(Integer.valueOf(0)));
+		h.push(p, Direction.UP);
+		assertThat(Integer.valueOf(h.getX()), is(Integer.valueOf(0)));
+		assertThat(Integer.valueOf(h.getY()), is(Integer.valueOf(0)));
 	}
 
 	@Test
 	public void testCoordinatesAfterPush() {
-		HandCart hc = new HandCart();
-		hc.setPosition(0, 0);
-		assertThat(Integer.valueOf(hc.getXAfterPush(Direction.UP)), is(Integer.valueOf(0)));
-		assertThat(Integer.valueOf(hc.getYAfterPush(Direction.UP)), is(Integer.valueOf(-1)));
+		HandCart h = new HandCart();
+		h.setPosition(0, 0);
+		assertThat(Integer.valueOf(h.getXAfterPush(Direction.UP)), is(Integer.valueOf(0)));
+		assertThat(Integer.valueOf(h.getYAfterPush(Direction.UP)), is(Integer.valueOf(-1)));
 
-		assertThat(Integer.valueOf(hc.getXAfterPush(Direction.DOWN)), is(Integer.valueOf(0)));
-		assertThat(Integer.valueOf(hc.getYAfterPush(Direction.DOWN)), is(Integer.valueOf(1)));
+		assertThat(Integer.valueOf(h.getXAfterPush(Direction.DOWN)), is(Integer.valueOf(0)));
+		assertThat(Integer.valueOf(h.getYAfterPush(Direction.DOWN)), is(Integer.valueOf(1)));
 
-		assertThat(Integer.valueOf(hc.getXAfterPush(Direction.LEFT)), is(Integer.valueOf(-1)));
-		assertThat(Integer.valueOf(hc.getYAfterPush(Direction.LEFT)), is(Integer.valueOf(0)));
+		assertThat(Integer.valueOf(h.getXAfterPush(Direction.LEFT)), is(Integer.valueOf(-1)));
+		assertThat(Integer.valueOf(h.getYAfterPush(Direction.LEFT)), is(Integer.valueOf(0)));
 
-		assertThat(Integer.valueOf(hc.getXAfterPush(Direction.RIGHT)), is(Integer.valueOf(1)));
-		assertThat(Integer.valueOf(hc.getYAfterPush(Direction.RIGHT)), is(Integer.valueOf(0)));
+		assertThat(Integer.valueOf(h.getXAfterPush(Direction.RIGHT)), is(Integer.valueOf(1)));
+		assertThat(Integer.valueOf(h.getYAfterPush(Direction.RIGHT)), is(Integer.valueOf(0)));
 	}
 
 	@Test
 	public void testCollisionOnPush() throws Exception {
-		HandCart hc1 = new HandCart();
-		hc1.setPosition(0, 0);
+		HandCart h1 = new HandCart();
+		h1.setPosition(0, 0);
 		StendhalRPZone z = new StendhalRPZone("test", 10, 10);
 		Player p = PlayerTestHelper.createPlayer("pusher");
-		z.add(hc1, false);
+		z.add(h1, false);
 
 		// one successful push
-		hc1.push(p, Direction.RIGHT);
-		assertThat(Integer.valueOf(hc1.getX()), is(Integer.valueOf(1)));
+		h1.push(p, Direction.RIGHT);
+		assertThat(Integer.valueOf(h1.getX()), is(Integer.valueOf(1)));
 
-		// now we add an obstacle right of hc1
-		HandCart hc2 = new HandCart();
-		hc2.setPosition(02, 0);
-		z.add(hc2, false);
+		// now we add an obstacle right of h1
+		HandCart h2 = new HandCart();
+		h2.setPosition(02, 0);
+		z.add(h2, false);
 
 		// push should not be executed now and stay at the former place
-		hc1.push(p, Direction.RIGHT);
-		assertThat(Integer.valueOf(hc1.getX()), is(Integer.valueOf(1)));
+		h1.push(p, Direction.RIGHT);
+		assertThat(Integer.valueOf(h1.getX()), is(Integer.valueOf(1)));
 	}
 }
