@@ -19,7 +19,7 @@ import games.stendhal.server.entity.player.Player;
 import games.stendhal.server.entity.slot.EntitySlot;
 import marauroa.common.game.RPObject;
 import marauroa.common.game.RPSlot;
-
+import games.stendhal.server.entity.mapstuff.handcart.HandCart;
 /**
  * Utilities for checking permissions to access items.
  */
@@ -59,6 +59,9 @@ public class ItemAccessPermissions {
 				return player == parent;
 			} else if (parent instanceof Chest) {
 				// No bound chests
+				return true;
+			} else if (parent instanceof HandCart) {
+				// No bound handcarts
 				return true;
 			} else {
 				// Only allow to use objects from players, corpses, chests or
