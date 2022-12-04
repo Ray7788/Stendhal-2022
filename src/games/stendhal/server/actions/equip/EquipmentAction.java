@@ -23,6 +23,7 @@ import games.stendhal.server.entity.item.Corpse;
 import games.stendhal.server.entity.mapstuff.chest.Chest;
 import games.stendhal.server.entity.player.Player;
 import marauroa.common.game.RPAction;
+import games.stendhal.server.entity.mapstuff.handcart.HandCart;
 
 /**
  * This listener handles all entity movements from a slot to either another slot
@@ -49,7 +50,8 @@ public abstract class EquipmentAction implements ActionListener {
 
 	/** the list of valid container classes. */
 	private static final Class< ? >[] validContainerClasses = new Class< ? >[] {
-		Player.class, Chest.class, Corpse.class, Container.class };
+//		Player.class, Chest.class, Corpse.class, Container.class };
+		Player.class, Chest.class, Corpse.class, Container.class, HandCart.class};
 
 	/** List of the valid container classes for easy access. */
 	protected final List<Class< ? >> validContainerClassesList = Arrays.asList(validContainerClasses);
