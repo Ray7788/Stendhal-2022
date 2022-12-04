@@ -114,6 +114,8 @@ public abstract class RPEntity extends CombatEntity {
 	protected int level;
 	private int mana;
 	private int base_mana;
+	private int charm_level;
+	private int multiple_charms;
 
 	private String deathSound;
 	private String bloodClass;
@@ -290,6 +292,7 @@ public abstract class RPEntity extends CombatEntity {
 		damageReceived = new CounterMap<>(true);
 		enemiesThatGiveFightXP = new WeakHashMap<>();
 		totalDamageReceived = 0;
+		charm_level = -1;
 	}
 
 	public RPEntity() {
@@ -298,6 +301,7 @@ public abstract class RPEntity extends CombatEntity {
 		damageReceived = new CounterMap<>(true);
 		enemiesThatGiveFightXP = new WeakHashMap<>();
 		totalDamageReceived = 0;
+		charm_level = -1;
 	}
 
 	/**
@@ -433,6 +437,39 @@ public abstract class RPEntity extends CombatEntity {
 		}
 
 		return given;
+	}
+	
+	/**
+	 * Get the current charm level.
+	 *
+	 * @return The current charm level.
+	 *
+	 */
+	public int getCharmLevel() {
+		return charm_level;
+	}
+	
+	public int setCharmLevel(int level) {
+		charm_level = level;
+		
+		return level;
+	}
+	
+	/**
+	 * Get the aggregate charm level when multiple charms used.
+	 *
+	 * @return The aggregate charm level.
+	 *
+	 */
+	
+	public int getMultipleCharms() {
+		  return multiple_charms;
+	}
+
+	public int setMultipleCharms(int val) {
+		multiple_charms += val;
+		
+		return multiple_charms;
 	}
 
 	/**

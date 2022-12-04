@@ -223,6 +223,66 @@
       <slot name="rhand"/>
     </equipable>
   </item>
+  
+  <item name="bronze pipe">
+    <type class="tool" subclass="bronze_pipe" tileid="-1"/>
+    <description>You see a bronze pipe</description>
+    <implementation class-name="games.stendhal.server.entity.item.MusicalPipe"/>
+    <attributes>
+      <menu value="Play|Use"/>
+      <itemset value="40"/>
+    </attributes>
+    <weight value="3.0"/>
+    <value value="40"/>
+    <equipable>
+      <slot name="ground"/>
+      <slot name="content"/>
+      <slot name="bag"/>
+      <slot name="trade"/>
+      <slot name="lhand"/>
+      <slot name="rhand"/>
+    </equipable>
+  </item>
+
+  <item name="silver pipe">
+    <type class="tool" subclass="silver_pipe" tileid="-1"/>
+    <description>You see a silver pipe</description>
+    <implementation class-name="games.stendhal.server.entity.item.MusicalPipe"/>
+    <attributes>
+      <menu value="Play|Use"/>
+      <itemset value="170"/>
+    </attributes>
+    <weight value="3.0"/>
+    <value value="170"/>
+    <equipable>
+      <slot name="ground"/>
+      <slot name="content"/>
+      <slot name="bag"/>
+      <slot name="trade"/>
+      <slot name="lhand"/>
+      <slot name="rhand"/>
+    </equipable>
+  </item>
+
+  <item name="gold pipe">
+    <type class="tool" subclass="gold_pipe" tileid="-1"/>
+    <description>You see a gold pipe</description>
+    <implementation class-name="games.stendhal.server.entity.item.MusicalPipe"/>
+    <attributes>
+      <menu value="Play|Use"/>
+      <itemset value="450"/>
+    </attributes>
+    <weight value="3.0"/>
+    <value value="450"/>
+    <equipable>
+      <slot name="ground"/>
+      <slot name="content"/>
+      <slot name="bag"/>
+      <slot name="trade"/>
+      <slot name="lhand"/>
+      <slot name="rhand"/>
+    </equipable>
+  </item>
 
   <item name="rotary cutter">
     <type class="tool" subclass="rotary_cutter" tileid="-1"/>
