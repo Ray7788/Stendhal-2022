@@ -1,7 +1,9 @@
 Changelog
 ---------
 ---------
+1.41
 
+3 features were added to the game successfully: hand cart, disguise, pipe 
 
 1.40
 

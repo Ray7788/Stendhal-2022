@@ -202,21 +202,21 @@ Notable contributors:
   · Maps maker
   · NPCs
   - Khawla Ali Hasan Ali Almarzooqi 
-  · bug:Haunchy doesn't accept charcoal
+  · Feature:Handcarts
     - Amal Manzoor
-  · bug:Cheating on Zekiel's Practical Test
+  · Feature:Handcarts
       - Emre Yildirim
-  · bug:Why does he ignore "horse hair"
+  · Feature:pipe
         - Niannu Gao
-  · bug:Players can’t choose what masks they get from Fidorea
+  · Feature:disguise
           - Rui Xu
-  · bug:Coralia should have option to accept everything
+  · Feature:disguise
             - Matthew Taylor-Shaw
-  · bug: Lieutenant Drilenun suggests that a better weapon exists.... BUT HE IS WRONG
+  · Feature: pipe
   - Nouf Aldighalby
-  · bug:Fish Soup for Hughie
+  · Feature:Handcarts
     - Keshav Gupta
-  · bug: Sheep pet prevents travel between zones
+  · Feature: pipe
   
   
   
