@@ -54,6 +54,7 @@ import games.stendhal.client.entity.UseableItem;
 import games.stendhal.client.entity.UseableRing;
 import games.stendhal.client.entity.WalkBlocker;
 import games.stendhal.client.entity.Wall;
+import games.stendhal.client.entity.HandCart;
 
 /**
  * Registers the relationship between Type, eclass and java class of entity
@@ -115,7 +116,7 @@ public final class EntityMap {
 
 		register("food", null, null, SheepFood.class);
 		register("chest", null, null, Chest.class);
-
+		register("handcart", null, null, HandCart.class);
 		register("corpse", null, null, Corpse.class);
 
 		register("blood", null, null, Blood.class);

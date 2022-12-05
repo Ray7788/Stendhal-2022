@@ -38,6 +38,8 @@ import games.stendhal.server.entity.mapstuff.area.Wall;
 import games.stendhal.server.entity.mapstuff.block.Block;
 import games.stendhal.server.entity.mapstuff.block.BlockTarget;
 import games.stendhal.server.entity.mapstuff.chest.Chest;
+import games.stendhal.server.entity.mapstuff.handcart.HandCart;
+import games.stendhal.server.entity.mapstuff.handcart.HandCartTarget;
 import games.stendhal.server.entity.mapstuff.game.GameBoard;
 import games.stendhal.server.entity.mapstuff.office.ArrestWarrant;
 import games.stendhal.server.entity.mapstuff.office.RentedSign;
@@ -150,6 +152,15 @@ public class RPClassGenerator {
 		}
 		if (!RPClass.hasRPClass("gate")) {
 			Gate.generateGateRPClass();
+		}
+		if (!RPClass.hasRPClass("gold_source")) {
+			GoldSource.generateRPClass();
+		}
+		if (!RPClass.hasRPClass("handcart")) {
+			HandCart.generateRPClass();
+		}
+		if (!RPClass.hasRPClass("handcarttarget")) {
+			HandCartTarget.generateRPClass();
 		}
 		if (!RPClass.hasRPClass("gold_source")) {
 			GoldSource.generateRPClass();
