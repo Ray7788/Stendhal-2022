@@ -66,6 +66,7 @@ public class OrcWeaponArmorGuyNPC implements ZoneConfigurator {
 				addGreeting();
 				addJob("I am Salesman. What you?");
 				addHelp("I sell nice items, look at blackboard on wall.");
+				shops.add("sellbetterstuff1", "disguise armor",1999);
 				new SellerAdder().addSeller(this, new SellerBehaviour(shops.get("sellbetterstuff1")), false);
 				addOffer("Look at blackboard on wall to see my offer.");
 				addQuest("I am so happy as I am. I want nothing.");
