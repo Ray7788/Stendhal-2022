@@ -13,7 +13,6 @@ import games.stendhal.server.actions.equip.EquipAction;
 import games.stendhal.server.actions.equip.EquipmentAction;
 import games.stendhal.server.core.engine.SingletonRepository;
 import games.stendhal.server.core.engine.StendhalRPZone;
-import games.stendhal.server.entity.item.AreaUseItem;
 import games.stendhal.server.entity.player.Player;
 import games.stendhal.server.maps.MockStendhalRPRuleProcessor;
 import marauroa.common.game.RPAction;
@@ -104,6 +103,7 @@ public class MusicalPipeTest extends ZoneAndPlayerTestImpl {
 		equippedPlayer(eqAction, rpAction, player, item, false);
 		
 		assertEquals(40, player.getCharmLevel());
+		
 	
 	}
 	

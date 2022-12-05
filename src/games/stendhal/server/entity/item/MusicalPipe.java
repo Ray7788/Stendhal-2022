@@ -6,6 +6,8 @@ import games.stendhal.server.core.engine.StendhalRPZone;
 import games.stendhal.server.entity.RPEntity;
 import games.stendhal.server.entity.player.Player;
 import marauroa.common.game.RPObject;
+import java.util.List;
+import java.util.ArrayList;
 
 
 public class MusicalPipe extends AreaUseItem {
@@ -13,6 +15,8 @@ public class MusicalPipe extends AreaUseItem {
 	public HashMap<String, Integer> values;
 	private Boolean equipped = false;
 	private int value;
+	private List<RPEntity> attackers;
+	private ArrayList<Integer> attackersDamages;
 
 
 	public MusicalPipe(final String name, final String clazz, final String subclass,
@@ -30,6 +34,7 @@ public class MusicalPipe extends AreaUseItem {
 	public MusicalPipe(final MusicalPipe item) {
 		super(item);
 	}
+	
 	
 	@Override
 	protected boolean onUsedInArea(final RPEntity e, final StendhalRPZone zone, final int x, final int y) {
@@ -76,13 +81,51 @@ public class MusicalPipe extends AreaUseItem {
 				if (new_charm_level == 0) {
 					ent.player.setCharmLevel(-1);
 				}
+				for (int i=0; i<getAttackers().size(); i++) {
+					attackers.get(i).setAtk(getAttackersDamages().get(i));
+				}
+				getAttackersDamages().clear();
+				getAttackers().clear();
 					
 			}
 			equipped = false;
 		}
+		
 		return super.onUnequipped();
 	}
 
+	@Override
+	public boolean onUsed(RPEntity player) {
+		// store original attack values of entities attacking player
+		setAttackers(player.getAttackingRPEntities());
+		ArrayList<Integer> attackersDamages = new ArrayList<Integer>();
+		
+		// set all entities attacking the player to deal 0 damage for 1 second.
+		for (int i=0; i<attackers.size(); i++) {
+			attackersDamages.add(attackers.get(i).getAtk());
+			attackers.get(i).setAtk(0);
+		}
+		
+		setAttackersDamages(attackersDamages);
+		return true;
+	}
+			
+	public List<RPEntity> getAttackers() {
+		return this.attackers;
+	}
+	
+	public void setAttackers(List<RPEntity> attackers) {
+		this.attackers = attackers;
+	}
+	
+	public void setAttackersDamages(ArrayList<Integer> inpList) {
+		this.attackersDamages = inpList;
+	}
+	
+	public ArrayList<Integer> getAttackersDamages() {
+		return this.attackersDamages;
+	}
+	
 	public class Ent{
 		boolean isPlayer;
 		Player player;
