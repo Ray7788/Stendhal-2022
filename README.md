@@ -15,10 +15,6 @@ Players would need somewhere to buy the armour from (maybe that guy who sells st
 When wearing the disguise, players can walk in certain areas (perhaps hard coded for now) without the enemy mobs seeing them and rushing to attack them.  It would be like being invisible in admin mode.
 But there would always be a chance of being recognised as an interloper by some nearby mob, in which case the mob would give a cry of "attack!" or something, and the player would no longer be invisible. The more armor you are wearing of the right kind, the lower the probability that you are detected.
 
-Maybe some costumes would need more than just armor - like the elf one, which might need fake ears and a dress or robe or something rather than armor.  These would be bought from other NPCs, picked to suit whatever mob is being impersonated.
-
-This would be a fun feature, and would allow weaker players the chance to explore some harder areas, making the game more interesting for new players and helping keep them coming back to play some more.
-
 -----------------
 
 Are you looking for adventure? Want to fight for riches?<br>
